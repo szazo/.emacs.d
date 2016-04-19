@@ -1,2 +1,4 @@
-# .emacs.d
-My emacs conf
+# Install
+
+mv ~/.emacs.d ~/.emacs.d.old
+git clone git://github.com/szazo/.emacs.d.git ~/.emacs.d/
