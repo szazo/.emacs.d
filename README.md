@@ -1,4 +1,4 @@
 # Install
 
 mv ~/.emacs.d ~/.emacs.d.old
-git clone git://github.com/szazo/.emacs.d.git ~/.emacs.d/
+git clone https://github.com/szazo/.emacs.d.git ~/.emacs.d/
