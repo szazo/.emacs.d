@@ -19,3 +19,6 @@
               (setq flycheck-check-syntax-automatically '(save mode-enabled))
               (eldoc-mode +1)
               (company-mode-on))))
+
+;; tab size
+(setq-default typescript-indent-level 2)
