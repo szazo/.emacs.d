@@ -39,6 +39,9 @@
 
 		;; docker
 		docker
+
+		;; less
+		less-css-mode
 		
 		;; themes
 		reykjavik-theme
