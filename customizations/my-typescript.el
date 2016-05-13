@@ -21,4 +21,4 @@
               (company-mode-on))))
 
 ;; tab size
-(setq-default typescript-indent-level 2)
+(setq-default typescript-indent-level 4)
