@@ -40,6 +40,9 @@
 		;; docker
 		docker
 
+		;; yaml editing
+		yaml-mode
+		
 		;; less
 		less-css-mode
 		
