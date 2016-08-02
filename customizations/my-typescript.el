@@ -6,7 +6,7 @@
             (eldoc-mode +1)
             ;; company is an optional dependency. You have to
             ;; install it separately via package-install
-            (company-mode-on)))
+            (company-mode)))
 
 ;; Tide can be used along with web-mode to edit tsx files
 (require 'web-mode)
@@ -18,7 +18,7 @@
               (flycheck-mode +1)
               (setq flycheck-check-syntax-automatically '(save mode-enabled))
               (eldoc-mode +1)
-              (company-mode-on))))
+              (company-mode))))
 
 ;; tab size
 (setq-default typescript-indent-level 4)

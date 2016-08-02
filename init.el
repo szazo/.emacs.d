@@ -45,6 +45,10 @@
 		
 		;; themes
 		reykjavik-theme
+
+		;; parens
+		rainbow-delimiters
+		smartparens
 		))
 
 ;; install not already installed packages
@@ -55,7 +59,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
+(load "my-company.el")
 (load "my-tabs.el")
+(load "my-parens.el")
 (load "my-whitespace-visualizations.el")
 (load "my-helm.el")
 (load "my-projectile.el")
