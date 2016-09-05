@@ -1,1 +1,1 @@
-(load-theme 'reykjavik t)
+(load-theme 'gotham t)
