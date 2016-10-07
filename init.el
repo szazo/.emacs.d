@@ -79,7 +79,7 @@
 (load "my-themes.el")
 (load "my-org.el")
 (load "my-dired.el")
-(load "my-mail.el")
+;; (load "my-mail.el")
 (load "my-fonts.el")
 
 (custom-set-variables
