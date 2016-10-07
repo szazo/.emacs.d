@@ -79,6 +79,9 @@
 (load "my-themes.el")
 (load "my-org.el")
 (load "my-dired.el")
+(load "my-mail.el")
+(load "my-fonts.el")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
