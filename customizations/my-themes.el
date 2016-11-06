@@ -1,1 +1,1 @@
-(load-theme 'gotham t)
+(load-theme 'zenburn t)

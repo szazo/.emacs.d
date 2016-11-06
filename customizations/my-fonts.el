@@ -1,2 +1,2 @@
 (add-to-list 'default-frame-alist
-			 '(font . "Inconsolata-12"))
+			 '(font . "Hack-10"))
