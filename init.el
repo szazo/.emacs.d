@@ -51,10 +51,14 @@
 		
 		;; themes
 		gotham-theme
+		alect-themes
 
 		;; parens
 		rainbow-delimiters
 		smartparens
+
+		;; fill column
+		column-marker
 		))
 
 ;; install not already installed packages
@@ -79,7 +83,7 @@
 (load "my-themes.el")
 (load "my-org.el")
 (load "my-dired.el")
-(load "my-mail.el")
+;; (load "my-mail.el")
 (load "my-fonts.el")
 (load "my-cpp.el")
 
