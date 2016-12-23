@@ -51,10 +51,14 @@
 		
 		;; themes
 		gotham-theme
+		alect-themes
 
 		;; parens
 		rainbow-delimiters
 		smartparens
+
+		;; fill column
+		column-marker
 		))
 
 ;; install not already installed packages
