@@ -1,1 +1,1 @@
-(load-theme 'zenburn t)
+(load-theme 'material t)
