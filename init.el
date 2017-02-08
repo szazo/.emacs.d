@@ -60,13 +60,15 @@
 
 		;; fill column
 		column-marker
+
+		;; weather
+		wttrin
 		))
 
 ;; install not already installed packages
 (dolist (p my-packages)
 	(when (not (package-installed-p p))
 		(package-install p)))
-
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
@@ -95,6 +97,8 @@
   '(add-to-list 'TeX-command-list
 				'("XeLaTeX" "xelatex --shell-escape -interaction=nonstopmode %s"
 				    TeX-run-command t t :help "Run xelatex") t))
+
+(setq wttrin-default-cities '("Budapest"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
