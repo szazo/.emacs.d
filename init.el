@@ -14,6 +14,8 @@
 
 (defvar my-packages
 	'(
+		use-package
+		
 		magit
 		projectile
 		helm
