@@ -96,4 +96,5 @@
 (load "my-python.el")
 (load "my-ftp")
 (load "my-latex")
+(load "my-ledger")
 
