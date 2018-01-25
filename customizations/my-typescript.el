@@ -1,3 +1,6 @@
+'(flycheck-highlighting-mode (quote lines))
+'(flycheck-indication-mode (quote right-fringe))
+
 (add-hook 'typescript-mode-hook
           (lambda ()
             (tide-setup)
