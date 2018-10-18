@@ -65,6 +65,9 @@
 
 		;; weather
 		wttrin
+
+    ;; wakatime
+    wakatime-mode
 		))
 
 ;; install not already installed packages
@@ -96,4 +99,6 @@
 (load "my-ftp")
 (load "my-latex")
 (load "my-ledger")
+
+(global-wakatime-mode)
 
