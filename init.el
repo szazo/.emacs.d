@@ -60,9 +60,6 @@
 		rainbow-delimiters
 		smartparens
 
-		;; fill column
-		column-marker
-
 		;; python
 		elpy
 
