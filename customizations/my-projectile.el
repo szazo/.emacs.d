@@ -1,1 +1,1 @@
-(projectile-global-mode)
+(projectile-mode 1)
