@@ -3,7 +3,7 @@
 
 ;; phpunit keyboard mapping
 (add-hook 'php-mode-hook (lambda()
-													 (setq indent-tabs-mode t)
+													 ;; (setq indent-tabs-mode t)
 													 (local-set-key (kbd "C-x t") 'phpunit-current-test)
 													 (local-set-key (kbd "C-x c") 'phpunit-current-class)
 													 (local-set-key (kbd "C-x p") 'phpunit-current-project)))
