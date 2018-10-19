@@ -105,3 +105,5 @@
 (load "my-latex")
 (load "my-ledger")
 
+(global-wakatime-mode)
+
