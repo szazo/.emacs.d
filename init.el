@@ -2,80 +2,85 @@
 
 ; init package repos
 (add-to-list 'package-archives
-						 '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-						 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
 
 ; get the package list if not already installed
 (when (not package-archive-contents)
-	(package-refresh-contents))
+  (package-refresh-contents))
 
 (defvar my-packages
-	'(
-		use-package
-		
-		magit
-		projectile
-		helm
-		helm-projectile
+  '(
+    use-package
+    
+    magit
+    projectile
+    helm
+    helm-projectile
 
-		;; tabs
-		dtrt-indent ; try adapt indentation style for the current buffer
-		smart-tabs-mode
+    ;; tabs
+    dtrt-indent ; try adapt indentation style for the current buffer
+    smart-tabs-mode
 
-		;; auto complete with company
-		company
+    ;; auto complete with company
+    company
 
-		;; web-mode
-		web-mode
-		
-		;; php
-		php-mode
-		flymake-php
-		phpunit
+    ;; web-mode
+    web-mode
+    
+    ;; php
+    php-mode
+    flymake-php
+    phpunit
 
-		;; typescript
-		tide
+    ;; typescript
+    tide
 
-		;; docker
-		docker
+    ;; docker
+    docker
 
-		;; yaml editing
-		yaml-mode
-		
-		;; less
-		less-css-mode
+    ;; yaml editing
+    yaml-mode
+    
+    ;; less
+    less-css-mode
 
-		;; sass
-		scss-mode
-		
-		;; themes
-		gotham-theme
-		alect-themes
-		material-theme
+    ;; sass
+    scss-mode
+    
+    ;; themes
+    gotham-theme
+    alect-themes
+    material-theme
 
-		;; parens
-		rainbow-delimiters
-		smartparens
+    ;; parens
+    rainbow-delimiters
+    smartparens
 
-		;; fill column
-		column-marker
+    ;; fill column
+;;    column-marker
 
-		;; python
-		elpy
+    ;; python
+    elpy
 
-		;; weather
-		wttrin
-		))
+    ;; weather
+    wttrin
+
+    ;; irony
+    irony
+    company-irony
+    ))
 
 ;; install not already installed packages
 (dolist (p my-packages)
-	(when (not (package-installed-p p))
-		(package-install p)))
+  (when (not (package-installed-p p))
+    (package-install p)))
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
+(add-to-list 'load-path "~/.emacs.d/lib")
 
 (load "my-company.el")
 (load "my-tabs.el")
