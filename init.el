@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+						 '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -13,71 +13,71 @@
   (package-refresh-contents))
 
 (defvar my-packages
-  '(
-    use-package
-    
-    magit
-    projectile
-    helm
-    helm-projectile
+	'(
+		use-package
 
-    ;; tabs
-    dtrt-indent ; try adapt indentation style for the current buffer
-    smart-tabs-mode
+    req-package
+		
+		magit
+		projectile
+		helm
+		helm-projectile
 
-    ;; auto complete with company
-    company
+		;; tabs
+		dtrt-indent ; try adapt indentation style for the current buffer
+		smart-tabs-mode
 
-    ;; web-mode
-    web-mode
-    
-    ;; php
-    php-mode
-    flymake-php
-    phpunit
+		;; auto complete with company
+		company
 
-    ;; typescript
-    tide
+		;; web-mode
+		web-mode
+		
+		;; php
+		php-mode
+		flymake-php
+		phpunit
 
-    ;; docker
-    docker
+		;; typescript
+		tide
 
-    ;; yaml editing
-    yaml-mode
-    
-    ;; less
-    less-css-mode
+		;; docker
+		docker
 
-    ;; sass
-    scss-mode
-    
-    ;; themes
-    gotham-theme
-    alect-themes
-    material-theme
+		;; yaml editing
+		yaml-mode
+		
+		;; less
+		less-css-mode
 
-    ;; parens
-    rainbow-delimiters
-    smartparens
+		;; sass
+		scss-mode
+		
+		;; themes
+		gotham-theme
+		alect-themes
+		material-theme
 
-    ;; fill column
-;;    column-marker
+		;; parens
+		rainbow-delimiters
+		smartparens
 
-    ;; python
-    elpy
+		;; python
+		elpy
 
-    ;; weather
-    wttrin
+		;; weather
+		wttrin
 
-    ;; irony
-    irony
-    company-irony
-    ))
+    ;; wakatime
+    wakatime-mode
+		))
 
 ;; install not already installed packages
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(require 'req-package)
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (add-to-list 'load-path "~/.emacs.d/lib")
@@ -105,6 +105,7 @@
 (load "my-ftp")
 (load "my-latex")
 (load "my-ledger")
+(load "my-irony")
+(load "my-rtags")
 
 (global-wakatime-mode)
-

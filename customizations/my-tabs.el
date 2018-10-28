@@ -1,7 +1,8 @@
+;; disable tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq-default c-basic-offset 2)
-(setq js-indent-level 2)
+(setq-default js-indent-level 2)
 (setq-default typescript-indent-level 2)
 (setq-default typescript-expr-indent-offset 4)
 (setq-default web-mode-code-indent-offset 2)
