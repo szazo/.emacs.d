@@ -15,6 +15,8 @@
 (defvar my-packages
 	'(
 		use-package
+
+    req-package
 		
 		magit
 		projectile
@@ -75,6 +77,8 @@
 	(when (not (package-installed-p p))
 		(package-install p)))
 
+(require 'req-package)
+
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 (load "my-company.el")
@@ -99,6 +103,8 @@
 (load "my-ftp")
 (load "my-latex")
 (load "my-ledger")
+(load "my-irony")
+(load "my-rtags")
 
 (global-wakatime-mode)
 
