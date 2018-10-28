@@ -82,6 +82,7 @@
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
+(load "my-flycheck.el")
 (load "my-company.el")
 (load "my-tabs.el")
 (load "my-parens.el")
