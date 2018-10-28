@@ -77,7 +77,16 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(setq use-package-always-ensure t)
+
 (require 'req-package)
+(req-package el-get ;; prepare el-get (optional)
+  :force t ;; load package immediately, no dependency resolution
+  :config
+  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+  (el-get 'sync))
+
+;;(req-package--log-open-log)
 
 (add-to-list 'load-path "~/.emacs.d/customizations")
 (add-to-list 'load-path "~/.emacs.d/lib")
@@ -107,5 +116,8 @@
 (load "my-ledger")
 (load "my-irony")
 (load "my-rtags")
+(load "my-pt")
+
+(req-package-finish)
 
 (global-wakatime-mode)
