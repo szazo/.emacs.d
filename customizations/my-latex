@@ -1,7 +1,0 @@
-(setq-default TeX-engine 'xetex)
-(setq-default TeX-PDF-mode t)
-
-(eval-after-load "tex"
-  '(add-to-list 'TeX-command-list
-				'("XeLaTeX" "xelatex --shell-escape -interaction=nonstopmode %s"
-				    TeX-run-command t t :help "Run xelatex") t))

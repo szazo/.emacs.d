@@ -117,6 +117,7 @@
 (load "my-irony")
 (load "my-rtags")
 (load "my-pt")
+(load "my-processing")
 
 (req-package-finish)
 
