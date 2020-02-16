@@ -118,7 +118,22 @@
 (load "my-rtags")
 (load "my-pt")
 (load "my-processing")
+(load "my-rust")
 
 (req-package-finish)
 
 (global-wakatime-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (rust-mode helm-rtags company-rtags company-auctex processing-mode pt flycheck-rtags rtags ledger-mode wakatime-mode wttrin elpy smartparens rainbow-delimiters material-theme alect-themes gotham-theme scss-mode yaml-mode docker tide phpunit flymake-php php-mode web-mode company smart-tabs-mode dtrt-indent helm-projectile helm projectile magit req-package use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
