@@ -10,4 +10,7 @@
 (setq-default web-mode-attr-indent-offset 2)
 
 ;; enable mode which can detect indentation for the file and adapt settings to that
-(dtrt-indent-mode)
+(req-package dtrt-indent
+  :config (dtrt-indent-mode))
+
+(req-package smart-tabs-mode)
