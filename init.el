@@ -101,8 +101,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(wakatime-mode racer rust-mode processing-mode pt flycheck-rtags company-rtags helm-rtags rtags elpy alect-themes gotham-theme material-theme phpunit flymake-php tide php-mode web-mode helm-projectile projectile helm smartparens rainbow-delimiters smart-tabs-mode dtrt-indent flycheck scss-mode yaml-mode docker company-auctex company magit ledger-mode wttrin req-package el-get)))
+ '(custom-safe-themes
+   '("d4f8fcc20d4b44bf5796196dbeabec42078c2ddb16dcb6ec145a1c610e0842f3" default)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
