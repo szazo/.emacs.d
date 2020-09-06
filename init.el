@@ -39,9 +39,9 @@
 
 
 (req-package magit)
-(req-package projectile)
-(req-package helm)
-(req-package helm-projectile)
+;(req-package projectile)
+;(req-package helm)
+;(req-package helm-projectile)
 
 ;; auto complete with company
 (req-package company)
@@ -96,3 +96,16 @@
 (load "my-wakatime")
 
 (req-package-finish)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(wakatime-mode racer rust-mode processing-mode pt flycheck-rtags company-rtags helm-rtags rtags elpy alect-themes gotham-theme material-theme phpunit flymake-php tide php-mode web-mode helm-projectile projectile helm smartparens rainbow-delimiters smart-tabs-mode dtrt-indent flycheck scss-mode yaml-mode docker company-auctex company magit ledger-mode wttrin req-package el-get)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
