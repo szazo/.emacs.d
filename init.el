@@ -92,7 +92,7 @@
 (load "my-pt")
 (load "my-processing")
 (load "my-rust")
-;(load "my-nearley")
+(load "my-nearley")
 (load "my-wakatime")
 
 (req-package-finish)
