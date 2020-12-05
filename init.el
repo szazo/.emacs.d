@@ -94,6 +94,8 @@
 (load "my-rust")
 (load "my-nearley")
 (load "my-wakatime")
+(load "my-evil")
+(load "goto-chg")
 
 (req-package-finish)
 (custom-set-variables
