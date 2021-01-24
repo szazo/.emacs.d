@@ -2,7 +2,7 @@
 '(flycheck-indication-mode (quote right-fringe))
 
 (req-package tide
-  :require web-mode
+  :require web-mode vue-mode
   :config
   (add-hook 'typescript-mode-hook
             (lambda ()
@@ -26,7 +26,35 @@
                 (eldoc-mode +1)
                 (tide-hl-identifier-mode +1)
                 (company-mode))))
-  )
+
+  ;; https://github.com/AdamNiederer/vue-mode/issues/74
+  (setq mmm-typescript-mode-enter-hook (lambda ()
+                                         ;; (message "Enter hook")
+                                         (setq syntax-ppss-table nil)))
+
+  ;; https://github.com/ananthakumaran/tide/issues/400
+  (setq mmm-typescript-mode-submode-hook (lambda()
+                                           ;; (message "Submode hook")
+                                           (tide-setup)
+                                           ;; (flycheck-mode +1)
+                                           ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
+                                           (eldoc-mode +1)
+                                           (tide-hl-identifier-mode +1)
+                                           ;; company is an optional dependency. You have to
+                                           ;; install it separately via package-install
+                                           (company-mode)))
+
+
+  ;; https://github.com/Simplify/flycheck-typescript-tslint
+  ;; https://github.com/AdamNiederer/vue-mode/issues/15
+  ;; (add-hook 'vue-mode-hook (flycheck-select-checker 'javascript-eslint))
+  ;; (setq mmm-vue-html-mode-exit-hook (lambda ()
+  ;;                                     (message "Run when leaving vue-html mode")
+  ;;                                     (emmet-mode -1)))
+  ;; (setq mmm-vue-html-mode-enter-hook (lambda ()
+  ;;                                      (message "Run when entering vue-html mode")
+  ;;                                      (emmet-mode 1)))
+)
 
 
 ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
