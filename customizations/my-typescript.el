@@ -54,6 +54,7 @@
   ;; (setq mmm-vue-html-mode-enter-hook (lambda ()
   ;;                                      (message "Run when entering vue-html mode")
   ;;                                      (emmet-mode 1)))
+  ;; https://www.reddit.com/r/emacs/comments/fws0yi/vue_js_webdev_and_emacs/
 )
 
 
