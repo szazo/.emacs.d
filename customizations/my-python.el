@@ -15,3 +15,12 @@
 (req-package blacken)
 
 (req-package ein)
+
+(add-to-list 'load-path (expand-file-name "pyenv.el/"))
+(require 'pyenv)
+(setq pyenv-modeline-function 'pyenv--modeline-plain)
+(setq pyenv-modestring-prefix " ")
+(setq pyenv-modestring-postfix nil)
+(global-pyenv-mode)
+
+(add-hook 'pyenv-mode-hook 'elpy-rpc-restart)
