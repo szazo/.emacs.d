@@ -73,6 +73,7 @@
 (load "my-projectile.el")
 (load "my-helm-projectile.el")
 (load "my-web-mode.el")
+(load "my-sonarlint")
 (load "my-php.el")
 (load "my-windows.el")
 (load "my-typescript.el")

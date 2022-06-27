@@ -2,10 +2,14 @@
 '(flycheck-indication-mode (quote right-fringe))
 
 (req-package tide
-  :require web-mode vue-mode
+  :require web-mode vue-mode lsp-sonarlint
   :config
+  (require 'lsp-sonarlint-typescript)
+  (setq lsp-sonarlint-typescript-enabled t)
   (add-hook 'typescript-mode-hook
             (lambda ()
+              (lsp)
+              (lsp-ui-mode)
               (tide-setup)
               (flycheck-mode +1)
               (setq flycheck-check-syntax-automatically '(save mode-enabled))
