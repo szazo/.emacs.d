@@ -85,7 +85,7 @@
 (load "my-fonts.el")
 (load "my-cpp.el")
 (load "my-wttrin.el")
-(load "my-python.el")
+;(load "my-python.el")
 (load "my-ftp")
 (load "my-latex")
 (load "my-ledger")

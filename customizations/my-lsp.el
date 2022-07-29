@@ -9,6 +9,7 @@
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (c-mode . lsp)
          (c++-mode . lsp)
+         (python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
@@ -20,10 +21,10 @@
                       :remote? t
                       :server-id 'clangd-remote))
     (lsp-register-client
-     (make-lsp-client :new-connection (lsp-tramp-connection "pyls")
+     (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
                       :major-modes '(python-mode)
                       :remote? t
-                      :server-id 'pyls-remote))
+                      :server-id 'pylsp-remote))
     )
   )
 
