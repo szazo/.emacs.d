@@ -97,6 +97,7 @@
 (load "my-nearley")
 (load "my-wakatime")
 (load "my-evil")
+(load "my-shell-path")
 (load "goto-chg")
 
 (req-package-finish)
