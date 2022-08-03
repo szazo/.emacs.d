@@ -10,6 +10,7 @@
          (c-mode . lsp)
          (c++-mode . lsp)
          (python-mode . lsp)
+         (typescript-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
