@@ -13,6 +13,7 @@
                "jupyter"))
 
 (req-package blacken)
+(setq blacken-line-length 79)
 
 (req-package ein)
 
