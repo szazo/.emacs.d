@@ -1,12 +1,35 @@
+
+;; info: https://vxlabs.com/2022/06/12/typescript-development-with-emacs-tree-sitter-and-lsp-in-2022/
+
 '(flycheck-highlighting-mode (quote lines))
 '(flycheck-indication-mode (quote right-fringe))
+
+(req-package tree-sitter
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(req-package tree-sitter-langs
+  :require tree-sitter)
+
+(req-package typescript-mode
+  :require tree-sitter
+  :config
+  ;; we choose this instead of tsx-mode so that eglot can automatically figure out language for server
+  ;; see https://github.com/joaotavora/eglot/issues/624 and https://github.com/joaotavora/eglot#handling-quirky-servers
+  (define-derived-mode typescriptreact-mode typescript-mode "TypeScript TSX")
+  ;; use our derived mode for tsx files
+  (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescriptreact-mode))
+  ;; by default, typescript-mode is mapped to the treesitter typescript parser
+  ;; use our derived mode to map both .tsx AND .ts -> typescriptreact-mode -> treesitter tsx
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx))
+)
 
 (req-package tide
   :require web-mode vue-mode lsp-sonarlint
   :config
   (require 'lsp-sonarlint-typescript)
   (setq lsp-sonarlint-typescript-enabled t)
-  (add-hook 'typescript-mode-hook
+  (add-hook 'typescript-ts-mode-hook
             (lambda ()
               (lsp)
               (lsp-ui-mode)
@@ -18,6 +41,9 @@
               ;; company is an optional dependency. You have to
               ;; install it separately via package-install
               (company-mode)))
+
+  ;; aligns annotation to the right hand side
+  (setq company-tooltip-align-annotations t)
 
   ;; Tide can be used along with web-mode to edit tsx files
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
