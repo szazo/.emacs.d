@@ -13,4 +13,4 @@
 (req-package dtrt-indent
   :config (dtrt-indent-mode))
 
-(req-package smart-tabs-mode)
+;(req-package smart-tabs-mode)
