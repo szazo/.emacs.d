@@ -25,10 +25,10 @@
 )
 
 (req-package tide
-  :require web-mode vue-mode lsp-sonarlint
+  :require web-mode vue-mode
   :config
-  (require 'lsp-sonarlint-typescript)
-  (setq lsp-sonarlint-typescript-enabled t)
+  ;; (require 'lsp-sonarlint-typescript)
+  (setq typescript-enabled t)
   (add-hook 'typescript-ts-mode-hook
             (lambda ()
               (lsp)

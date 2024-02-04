@@ -74,7 +74,7 @@
 (load "my-helm-projectile.el")
 (load "my-web-mode.el")
 (load "my-lsp")
-(load "my-sonarlint")
+;; (load "my-sonarlint")
 (load "my-php.el")
 (load "my-windows.el")
 (load "my-typescript.el")
@@ -101,6 +101,9 @@
 (load "goto-chg")
 
 (req-package-finish)
+
+;; (advice-add 'risky-local-variable-p :override #'ignore)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
