@@ -17,18 +17,18 @@
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
-  (progn
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
-                      :major-modes '(c-mode c++-mode)
-                      :remote? t
-                      :server-id 'clangd-remote))
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
-                      :major-modes '(python-mode)
-                      :remote? t
-                      :server-id 'pylsp-remote))
-    )
+  ;; (progn
+  ;;   (lsp-register-client
+  ;;    (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
+  ;;                     :major-modes '(c-mode c++-mode)
+  ;;                     :remote? t
+  ;;                     :server-id 'clangd-remote))
+  ;;   (lsp-register-client
+  ;;    (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
+  ;;                     :major-modes '(python-mode)
+  ;;                     :remote? t
+  ;;                     :server-id 'pylsp-remote))
+  ;;   )
   )
 
 ;; (add-hook 'c-mode-hook 'lsp)
