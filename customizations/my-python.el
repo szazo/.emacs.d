@@ -6,6 +6,10 @@
 
 (req-package eglot
   :config
+  (setq treesit-language-source-alist
+        '((python . ("https://github.com/tree-sitter/tree-sitter-python"))
+          ))
+  (treesit-install-language-grammar 'python)
   (setq major-mode-remap-alist '((python-mode . python-ts-mode)))
   (add-to-list 'eglot-server-programs '(python-ts-mode . ("pylsp")))
   ;; (add-hook 'python-ts-mode 'eglot-ensure)
