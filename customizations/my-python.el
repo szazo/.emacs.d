@@ -11,7 +11,8 @@
           ))
   (treesit-install-language-grammar 'python)
   (setq major-mode-remap-alist '((python-mode . python-ts-mode)))
-  (add-to-list 'eglot-server-programs '(python-ts-mode . ("pylsp")))
+  ;; (add-to-list 'eglot-server-programs '(python-ts-mode . ("pylsp")))
+  (add-to-list 'eglot-server-programs '(python-ts-mode . ("pyright-langserver" "--stdio")))
   ;; (add-hook 'python-ts-mode 'eglot-ensure)
   (add-hook 'pyvenv-post-activate-hooks 'eglot-ensure)
   
