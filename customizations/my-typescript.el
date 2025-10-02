@@ -1,100 +1,82 @@
+; https://www.ovistoica.com/blog/2024-7-05-modern-emacs-typescript-web-tsx-config
+; https://notes.alexkehayias.com/setting-up-typescript-and-eslint-with-eglot/
 
-;; info: https://vxlabs.com/2022/06/12/typescript-development-with-emacs-tree-sitter-and-lsp-in-2022/
+(use-package eglot
+  :ensure t
+  :config 
+         (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("pnpm" "exec" "typescript-language-server" "--stdio")))
+         (add-to-list 'eglot-server-programs '(tsx-ts-mode . ("pnpm" "exec" "typescript-language-server" "--stdio")))
+         (add-hook 'typescript-ts-mode-hook 'eglot-ensure)
+         (add-hook 'tsx-ts-mode-hook 'eglot-ensure)
+         (add-hook 'typescript-ts-mode-hook (lambda() (company-mode -1)))
+         (add-hook 'tsx-ts-mode-hook (lambda() (company-mode -1)))
+         )
 
-'(flycheck-highlighting-mode (quote lines))
-'(flycheck-indication-mode (quote right-fringe))
+(use-package treesit
+  :ensure nil
+      :mode (("\\.tsx\\'" . tsx-ts-mode)
+             ("\\.js\\'"  . typescript-ts-mode)
+             ("\\.mjs\\'" . typescript-ts-mode)
+             ("\\.mts\\'" . typescript-ts-mode)
+             ("\\.cjs\\'" . typescript-ts-mode)
+             ("\\.ts\\'"  . typescript-ts-mode)
+             ("\\.jsx\\'" . tsx-ts-mode)
+             ("\\.json\\'" .  json-ts-mode)
+             ("\\.Dockerfile\\'" . dockerfile-ts-mode)
+             ("\\.prisma\\'" . prisma-ts-mode)
+             ;; More modes defined here...
+             )
+      :preface
+      (defun os/setup-install-grammars ()
+        "Install Tree-sitter grammars if they are absent."
+        (interactive)
+        (dolist (grammar
+                 '((css . ("https://github.com/tree-sitter/tree-sitter-css" "v0.20.0"))
+                   (bash "https://github.com/tree-sitter/tree-sitter-bash")
+                   (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
+                   (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.21.2" "src"))
+                   (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
+                   (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
+                   (go "https://github.com/tree-sitter/tree-sitter-go" "v0.20.0")
+                   (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+                   (make "https://github.com/alemuller/tree-sitter-make")
+                   (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+                   (cmake "https://github.com/uyha/tree-sitter-cmake")
+                   (c "https://github.com/tree-sitter/tree-sitter-c")
+                   (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+                   (toml "https://github.com/tree-sitter/tree-sitter-toml")
+                   (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
+                   (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
+                   (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))
+                   (prisma "https://github.com/victorhqc/tree-sitter-prisma")))
+          (add-to-list 'treesit-language-source-alist grammar)
+          ;; Only install `grammar' if we don't already have it
+          ;; installed. However, if you want to *update* a grammar then
+          ;; this obviously prevents that from happening.
+          (unless (treesit-language-available-p (car grammar))
+            (treesit-install-language-grammar (car grammar)))))
 
-(req-package tree-sitter
-  :config
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-(req-package tree-sitter-langs
-  :require tree-sitter)
-
-(req-package typescript-mode
-  :require tree-sitter
-  :config
-  ;; we choose this instead of tsx-mode so that eglot can automatically figure out language for server
-  ;; see https://github.com/joaotavora/eglot/issues/624 and https://github.com/joaotavora/eglot#handling-quirky-servers
-  (define-derived-mode typescriptreact-mode typescript-mode "TypeScript TSX")
-  ;; use our derived mode for tsx files
-  (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescriptreact-mode))
-  ;; by default, typescript-mode is mapped to the treesitter typescript parser
-  ;; use our derived mode to map both .tsx AND .ts -> typescriptreact-mode -> treesitter tsx
-  (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx))
-)
-
-(req-package tide
-  :require web-mode vue-mode
-  :config
-  ;; (require 'lsp-sonarlint-typescript)
-  (setq typescript-enabled t)
-  (add-hook 'typescript-ts-mode-hook
-            (lambda ()
-              (lsp)
-              (lsp-ui-mode)
-              (tide-setup)
-              (flycheck-mode +1)
-              (setq flycheck-check-syntax-automatically '(save mode-enabled))
-              (eldoc-mode +1)
-              (tide-hl-identifier-mode +1)
-              ;; company is an optional dependency. You have to
-              ;; install it separately via package-install
-              (company-mode)))
-
-  ;; aligns annotation to the right hand side
-  (setq company-tooltip-align-annotations t)
-
-  ;; Tide can be used along with web-mode to edit tsx files
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                (tide-setup)
-                (flycheck-mode +1)
-                (setq flycheck-check-syntax-automatically '(save mode-enabled))
-                (eldoc-mode +1)
-                (tide-hl-identifier-mode +1)
-                (company-mode))))
-
-  ;; https://github.com/AdamNiederer/vue-mode/issues/74
-  (setq mmm-typescript-mode-enter-hook (lambda ()
-                                         ;; (message "Enter hook")
-                                         (setq syntax-ppss-table nil)))
-
-  ;; https://github.com/ananthakumaran/tide/issues/400
-  (setq mmm-typescript-mode-submode-hook (lambda()
-                                           ;; (message "Submode hook")
-                                           (tide-setup)
-                                           ;; (flycheck-mode +1)
-                                           ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
-                                           (eldoc-mode +1)
-                                           (tide-hl-identifier-mode +1)
-                                           ;; company is an optional dependency. You have to
-                                           ;; install it separately via package-install
-                                           (company-mode)))
-
-
-  ;; https://github.com/Simplify/flycheck-typescript-tslint
-  ;; https://github.com/AdamNiederer/vue-mode/issues/15
-  ;; (add-hook 'vue-mode-hook (flycheck-select-checker 'javascript-eslint))
-  ;; (setq mmm-vue-html-mode-exit-hook (lambda ()
-  ;;                                     (message "Run when leaving vue-html mode")
-  ;;                                     (emmet-mode -1)))
-  ;; (setq mmm-vue-html-mode-enter-hook (lambda ()
-  ;;                                      (message "Run when entering vue-html mode")
-  ;;                                      (emmet-mode 1)))
-  ;; https://www.reddit.com/r/emacs/comments/fws0yi/vue_js_webdev_and_emacs/
-)
-
-
-;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-;; (setq js-doc-mail-address "your email address"
-;;        js-doc-author (format "your name <%s>" js-doc-mail-address)
-;;        js-doc-url "url of your website"
-;;        js-doc-license "license name")
-
-;; (add-hook 'typescript-mode-hook
-;;            #'(lambda ()
-;;                (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
-;;                (define-key js2-mode-map "@" 'js-doc-insert-tag)))
+      ;; Optional, but recommended. Tree-sitter enabled major modes are
+      ;; distinct from their ordinary counterparts.
+      ;;
+      ;; You can remap major modes with `major-mode-remap-alist'. Note
+      ;; that this does *not* extend to hooks! Make sure you migrate them
+      ;; also
+      (dolist (mapping
+               '((python-mode . python-ts-mode)
+                 (css-mode . css-ts-mode)
+                 (typescript-mode . typescript-ts-mode)
+                 (js-mode . typescript-ts-mode)
+                 (js2-mode . typescript-ts-mode)
+                 (c-mode . c-ts-mode)
+                 (c++-mode . c++-ts-mode)
+                 (c-or-c++-mode . c-or-c++-ts-mode)
+                 (bash-mode . bash-ts-mode)
+                 (css-mode . css-ts-mode)
+                 (json-mode . json-ts-mode)
+                 (js-json-mode . json-ts-mode)
+                 (sh-mode . bash-ts-mode)
+                 (sh-base-mode . bash-ts-mode)))
+        (add-to-list 'major-mode-remap-alist mapping))
+      :config
+      (os/setup-install-grammars))
