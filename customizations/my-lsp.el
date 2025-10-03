@@ -4,6 +4,7 @@
 
 (req-package pyvenv)
 
+
 (req-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
@@ -11,24 +12,17 @@
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (c-mode . lsp)
          (c++-mode . lsp)
-         ;; (python-mode . lsp)
-         (typescript-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp
   :config
-  ;; (progn
-  ;;   (lsp-register-client
-  ;;    (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
-  ;;                     :major-modes '(c-mode c++-mode)
-  ;;                     :remote? t
-  ;;                     :server-id 'clangd-remote))
-  ;;   (lsp-register-client
-  ;;    (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
-  ;;                     :major-modes '(python-mode)
-  ;;                     :remote? t
-  ;;                     :server-id 'pylsp-remote))
-  ;;   )
+  (progn
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
+                      :major-modes '(c-mode c++-mode)
+                      :remote? t
+                      :server-id 'clangd-remote))
+    )
   )
 
 ;; (add-hook 'c-mode-hook 'lsp)
