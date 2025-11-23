@@ -1,4 +1,4 @@
-(req-package dape
+(use-package dape
   ;; :preface
   ;; By default dape shares the same keybinding prefix as `gud'
   ;; If you do not want to use any prefix, set it to nil.
@@ -38,6 +38,6 @@
   )
 
 ;; Enable repeat mode for more ergonomic `dape' use
-(req-package repeat
+(use-package repeat
   :config
   (repeat-mode))

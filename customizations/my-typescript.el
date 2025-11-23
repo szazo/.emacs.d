@@ -2,19 +2,20 @@
 ; https://notes.alexkehayias.com/setting-up-typescript-and-eslint-with-eglot/
 
 (use-package eglot
-  :ensure t
   :config 
          (add-to-list 'eglot-server-programs '(typescript-ts-mode . ("pnpm" "exec" "typescript-language-server" "--stdio")))
          (add-to-list 'eglot-server-programs '(tsx-ts-mode . ("pnpm" "exec" "typescript-language-server" "--stdio")))
+         (add-to-list 'eglot-server-programs '(python-ts-mode . ("pyright-langserver" "--stdio")))
          (add-hook 'typescript-ts-mode-hook 'eglot-ensure)
          (add-hook 'tsx-ts-mode-hook 'eglot-ensure)
+         (add-hook 'pyvenv-post-activate-hooks 'eglot-ensure)
          (add-hook 'typescript-ts-mode-hook (lambda() (company-mode -1)))
          (add-hook 'tsx-ts-mode-hook (lambda() (company-mode -1)))
          )
 
 (use-package treesit
-  :ensure nil
-      :mode (("\\.tsx\\'" . tsx-ts-mode)
+  :straight nil
+  :mode (("\\.tsx\\'" . tsx-ts-mode)
              ("\\.js\\'"  . typescript-ts-mode)
              ("\\.mjs\\'" . typescript-ts-mode)
              ("\\.mts\\'" . typescript-ts-mode)
@@ -26,7 +27,7 @@
              ("\\.prisma\\'" . prisma-ts-mode)
              ;; More modes defined here...
              )
-      :preface
+  :preface
       (defun os/setup-install-grammars ()
         "Install Tree-sitter grammars if they are absent."
         (interactive)
@@ -53,8 +54,12 @@
           ;; Only install `grammar' if we don't already have it
           ;; installed. However, if you want to *update* a grammar then
           ;; this obviously prevents that from happening.
+          ;; (unless (file-directory-p (treesit-language-grammar-dir (car grammar)))
+          ;; (unless (treesit-language-available-p (car grammar))
           (unless (treesit-language-available-p (car grammar))
-            (treesit-install-language-grammar (car grammar)))))
+          (treesit-install-language-grammar (car grammar)))
+
+          ))
 
       ;; Optional, but recommended. Tree-sitter enabled major modes are
       ;; distinct from their ordinary counterparts.
@@ -78,5 +83,5 @@
                  (sh-mode . bash-ts-mode)
                  (sh-base-mode . bash-ts-mode)))
         (add-to-list 'major-mode-remap-alist mapping))
-      :config
+     :config
       (os/setup-install-grammars))

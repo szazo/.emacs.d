@@ -36,8 +36,8 @@
 				    TeX-run-command t t :help "Run xelatex") t))
 (setq-default TeX-engine 'xetex)
 
-(req-package company-auctex
-  :require company
+(use-package company-auctex
+  :after (company)
   :config
   (progn
     (company-auctex-init)

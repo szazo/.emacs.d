@@ -1,1 +1,1 @@
-(req-package pt)
+(use-package pt)

@@ -1,11 +1,9 @@
-(req-package rainbow-delimiters
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-  )
+(use-package rainbow-delimiters
+  :hook (prog-mode)
+)
 
-(req-package smartparens
+(use-package smartparens
+  :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
   :config
-  (require 'smartparens-config)
-  (add-hook 'prog-mode-hook #'smartparens-mode)
-  (add-hook 'prog-mode-hook #'show-smartparens-mode)
-  )
+  ;; load default config
+  (require 'smartparens-config))

@@ -1,5 +1,5 @@
-(req-package evil
-  :require undo-tree
+(use-package evil
+  :after (undo-tree)
   :config
   ;; (evil-mode 1)
   (global-undo-tree-mode)

@@ -1,10 +1,10 @@
-(req-package flymake-php
+(use-package flymake-php
   :config
   (add-hook 'php-mode-hook 'flymake-php-load)
   )
 
-(req-package php-mode
-  :require web-mode
+(use-package php-mode
+  :after web-mode
   :config
   ;; configure web-mode
   (require 'web-mode)
@@ -17,7 +17,7 @@
           ("blade"  . "\\.blade\\."))
         ))
 
-(req-package phpunit
+(use-package phpunit
   :config
   (add-hook 'php-mode-hook (lambda()
                              ;; phpunit keyboard mapping

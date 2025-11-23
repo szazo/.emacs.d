@@ -1,4 +1,4 @@
-(req-package material-theme
+(use-package material-theme
   :config
   (load-theme 'material t)
   )
