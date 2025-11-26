@@ -2,7 +2,10 @@
   :config
   (yas-global-mode))
 
-(req-package pyvenv)
+(req-package pyvenv
+  :config
+  (setq pyvenv-verbose t) 
+ )
 
 
 (req-package lsp-mode
