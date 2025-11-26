@@ -7,6 +7,6 @@
   (setq
    gptel-model 'gemini-pro-latest
    gptel-backend (gptel-make-gemini "Gemini"
-                                    :key "xxx"
+                                    :key (getenv "GEMINI_API_KEY")
                                     :stream t))
   )
