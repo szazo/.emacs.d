@@ -1,6 +1,8 @@
 ; https://www.ovistoica.com/blog/2024-7-05-modern-emacs-typescript-web-tsx-config
 ; https://notes.alexkehayias.com/setting-up-typescript-and-eslint-with-eglot/
 
+(setq-default typescript-ts-mode-indent-offset 4)
+
 (use-package eglot
   :ensure t
   :config 
