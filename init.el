@@ -61,6 +61,7 @@
 (load "my-shell-path")
 (load "my-dape")
 (load "my-gptel")
+(load "my-docstr")
 (load "goto-chg")
 
 ;; (req-package-finish)
