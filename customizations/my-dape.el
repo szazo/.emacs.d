@@ -10,9 +10,9 @@
   ;; Load breakpoints on startup
   ;; (after-init . dape-breakpoint-load)
 
-  ;; :config
+  :config
   ;; Turn on global bindings for setting breakpoints with mouse
-  ;; (dape-breakpoint-global-mode)
+  (dape-breakpoint-global-mode)
 
   ;; Info buffers to the right
   ;; (setq dape-buffer-window-arrangement 'right)
@@ -35,9 +35,24 @@
 
   ;; Projectile users
   ;; (setq dape-cwd-function 'projectile-project-root)
-  )
+  (add-to-list 'dape-configs
+               `(debugpy-virtualenv
+                 modes (python-mode python-ts-mode)
+                 ;; command ,(lambda () (executable-find "python"))
+                 host "127.0.0.1"
+                 port 5678
+                 ;; command-args ("-m" "debugpy.adapter")
+                 :type "debugpy"
+                 :request "attach"
+                 ;; :cwd dape-cwd-function
+                 ;; :connect (:host "127.0.0.1" :port 5678)))
+)))
+                 ;:program dape-buffer-default))
+
 
 ;; Enable repeat mode for more ergonomic `dape' use
 (use-package repeat
   :config
-  (repeat-mode))
+  (repeat-mode)
+
+  )
