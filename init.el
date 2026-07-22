@@ -63,7 +63,8 @@
 (load "my-gptel")
 (load "my-docstr")
 (load "goto-chg")
-
+(load "my-claude.el")
+(load "my-term.el")
 ;; (req-package-finish)
 
 ;; (advice-add 'risky-local-variable-p :override #'ignore)
