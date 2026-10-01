@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package docstr
   :config
   (global-docstr-mode 1)
