@@ -42,8 +42,6 @@
   :straight t
   :bind ("C-c a p" . agent-shell-prompt-compose)
   :config
-(setq agent-shell-antigravity-authentication
-      (agent-shell-antigravity-make-authentication :login t))
-  )
-
-
+  (setq agent-shell-antigravity-authentication
+        (agent-shell-antigravity-make-authentication :login t))
+  (agent-shell-antigravity-bootstrap))
