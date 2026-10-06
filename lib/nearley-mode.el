@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;;; A simple major mode for nearley.js grammar files
 ;;;     See https://nearley.js.org for details.
 

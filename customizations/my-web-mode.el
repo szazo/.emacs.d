@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package web-mode
   :after (web-mode)
   :config

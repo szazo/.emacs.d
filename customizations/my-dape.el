@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package dape
   ;; :preface
   ;; By default dape shares the same keybinding prefix as `gud'

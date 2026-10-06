@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package helm
   :config
   (global-set-key (kbd "M-x") 'undefined)

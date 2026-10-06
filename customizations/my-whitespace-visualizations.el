@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; (global-whitespace-mode)
 
 ;; (setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))

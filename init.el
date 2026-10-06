@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; https://systemcrafters.net/advanced-package-management/using-straight-el/
 (defvar bootstrap-version)
 (let ((bootstrap-file

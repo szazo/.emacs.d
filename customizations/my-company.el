@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (setq company-global-modes '(not python-ts-mode))
 (add-hook 'after-init-hook 'global-company-mode)
 

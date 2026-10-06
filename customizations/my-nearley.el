@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Loads nearley-mode. Requires "nearley-mode.el" to be on the load-path.
 (require 'nearley-mode)
 

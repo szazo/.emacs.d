@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package flymake-php
   :config
   (add-hook 'php-mode-hook 'flymake-php-load)

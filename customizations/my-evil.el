@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package evil
   :after (undo-tree)
   :config

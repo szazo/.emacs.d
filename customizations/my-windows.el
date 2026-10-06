@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; disable menubar and toolbar
 (menu-bar-mode -1)
 (tool-bar-mode -1)

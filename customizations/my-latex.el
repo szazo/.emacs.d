@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; (req-package tex-site
 ;; ;;  :defer t
 ;;   ;; :ensure t
