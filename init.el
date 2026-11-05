@@ -66,6 +66,7 @@
 (load "goto-chg")
 (load "my-claude.el")
 (load "my-term.el")
+(load "my-adoc.el")
 ;; (req-package-finish)
 
 ;; (advice-add 'risky-local-variable-p :override #'ignore)
